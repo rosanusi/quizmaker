@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>Ta-Da</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Ta-Da Daily Tasklist">
+    <link rel="stylesheet" href="css/main.css">
+
+  </head>
+
+
+<ul id="cloneContainer">
+          <li class="cloner">
+            <h3 class="cloner-title">Wanna clone this</h3>
+            <p>I want to be able to clone this structure and reuse it in the tempalte</p>
+            <button type="submit" class="closeBtn">Make it happen</button>
+          </li>
+        </ul>
