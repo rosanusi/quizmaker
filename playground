@@ -15,9 +15,9 @@
 
 
 <ul id="cloneContainer">
-          <li class="cloner">
-            <h3 class="cloner-title">Wanna clone this</h3>
-            <p>I want to be able to clone this structure and reuse it in the tempalte</p>
-            <button type="submit" class="closeBtn">Make it happen</button>
-          </li>
-        </ul>
+  <li class="cloner">
+    <h3 class="cloner-title">Wanna clone this</h3>
+    <p>I want to be able to clone this structure and reuse it in the tempalte</p>
+    <button type="submit" class="closeBtn">Make it happen</button>
+  </li>
+</ul>
