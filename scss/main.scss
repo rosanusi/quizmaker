@@ -21,7 +21,7 @@
 
 // 	.check {
 // 		@include span-columns(4);
-// 	} 
+// 	}
 // }
 
 
@@ -42,7 +42,7 @@ h1, h2, h3, h4, h5, h6 {
 	margin-bottom: rem(16);
 }
 
-h1 {	
+h1 {
 	font-size: rem(32);
 }
 
@@ -85,7 +85,7 @@ h6 {
 	margin-bottom: rem(24);
 
 	.inputGroup {
-		border-radius: 4px;	
+		border-radius: 4px;
 		margin-bottom: 24px;
 		background-color: #fff;
 		padding: rem(24);
@@ -93,12 +93,13 @@ h6 {
 		&:nth-child(2n) {
 			margin-right: 0;
 		}
-				
+
 
 		label {
 			display: block;
 			font-size: rem(16);
 			opacity: .4;
+      margin-bottom: rem(4);
 		}
 
 		textarea {
@@ -158,21 +159,25 @@ h6 {
 	margin-top: rem(40);
 
 	.questionWrap {
-		
+    position: relative;
+    display: block;
+
 		.questionCard {
 			border-radius: 4px;
+      padding: rem(24);
 			background-color: #fff;
 			font-weight: 600;
 			margin-bottom: rem(16);
 
 			.questionBlock {
-				padding: rem(24);
+				//padding: rem(24);
 			}
 
 
 			.answerForm {
 				background-color: #F9FAFC;
 				padding: rem(16);
+        margin-top: rem(16);
 
 				.answerInput {
 					width: 100%;
@@ -195,26 +200,37 @@ h6 {
 						cursor: pointer;
 					}
 				}
-
-
 			}
-		}
 
-		.answerList {
-			font-weight: 400;
-			.answerCard {
-				background-color:  lighten($errorColor, 40%);
-				margin-top: rem(16);
-				padding: rem(12);
-				border-radius: 4px;
-			}
+      .answerContainer {
+        //margin-top: rem(16);
+
+        .answerCard {
+          background-color:lighten($errorColor, 43%);
+          color: $errorColor;
+          padding: rem(8);
+          font-size: rem(14);
+          font-weight: 400;
+          border-radius: 4px;
+          margin-top: rem(8);
+
+          &.right {
+            background-color: lighten($successColor, 40%);
+            color: $successColor;
+          }
+
+          &.wrong {
+            background-color: lighten($errorColor, 40%);
+          }
+        }
+      }
 		}
 
 		.answerBtn {
 			text-decoration: none;
 			border: none;
 			display: inline-block;
-			margin-top: rem(4);
+			//margin-top: rem(4);
 			background: none;
 			font-size: rem(14);
 			color: $primaryColor;

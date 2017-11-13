@@ -5,17 +5,21 @@ var questionBtn = document.querySelector('.questionBtn');
 var questionField = document.querySelector('.questionInput');
 var questionBlock = document.querySelector('.quizBlock');
 var questionContainer = document.querySelector('.questionWrap');
-var listTemplate = questionContainer.querySelector('.questionCard.template');
+var questionTemplate = questionContainer.querySelector('.questionCard.template');
+var answerTemplate = questionContainer.querySelector('.answerCard.template');
 var storedQuestions;
+var storedAnswers;
 
 
 function main() {
 
 	if (load()) {
 		displayQuestions();
+		//displayAnswers();
 	}
 	else {
 		storedQuestions = [];
+		storedAnswers = [];
 	}
 }
 
@@ -34,10 +38,8 @@ function load() {
 
 
 questionBtn.addEventListener('click', function onEvent(event){
-
 	// prevent defualt behaviour
 	event.preventDefault();
-
 	if (questionField.value) {
 		questionField.innerHTML = questionField.value;
 
@@ -53,35 +55,29 @@ questionBtn.addEventListener('click', function onEvent(event){
 		questionContainer.innerHTML = '';
 		displayQuestions();
 
-
-
 		//Remove the value
 		questionField.value = "";
 
-
 	} else {
+
 		//TODO: Feedback to be added
 		console.log("it's got NO value");
+
 	}
-
-
 });
 
 
 
 function displayQuestions() {
-
 	storedQuestions.forEach(function(question, i) {
-
 		// Clone the questionCard and append it in the "ul"
-		var questionCard = listTemplate.cloneNode(true);
+		var questionCard = questionTemplate.cloneNode(true);
 		questionCard.classList.remove('template');
 		questionContainer.appendChild(questionCard);
 
 		//Bind the each questions in the array to their respective questioncard
 		var questionText = questionCard.querySelector('.question');
 		questionText.innerHTML = question.question;
-
 
 		// Answer Button should open answer form
 		var answerForm = questionCard.querySelector('.answerForm');
@@ -99,44 +95,76 @@ function displayQuestions() {
 		// Receive new answer and add it to the list of answers
 		var answerForm = questionCard.querySelector('.answerForm');
 		var answerInput = answerForm.querySelector('.answerInput');
+		var wrongAnswer = answerForm.querySelector('.wrongAnswer');
+		var rightAnswer = answerForm.querySelector('.rightAnswer');
 		var answerInputBtn = answerForm.querySelector('.priBtn');
 
 		// when the answerBtn is clicked add the input to the array
-		answerInputBtn.addEventListener("click", function(){
-			event.preventDefault();
+		// answerInputBtn.addEventListener("click", function(){
+		//
+		// });
 
-			if (answerInput && answerInput.value) {
+		answerInputBtn.addEventListener("click", e => addNewAnswer(answerInput, question, questionCard, wrongAnswer, rightAnswer, answerContainer));
 
-				storedAnswers = [];
+		// Show Answers on the page
+		if (storedQuestions[i].answers) {
+			var answers = storedQuestions[i].answers;
+			//console.log(storedQuestions[i].answers[i].text);
+			var answerContainer = questionCard.querySelector('.answerContainer');
+			answerContainer.innerHTML = "";
 
-				// Save it to the storedAnswers Array
-				storedAnswers.push({
+			question.answers.forEach(function(answer, i) {
+				var answerCard = answerTemplate.cloneNode(true);
+				answerCard.classList.remove('template');
+				answerContainer.appendChild(answerCard);
+				answerCard.innerHTML = answer.text;
+
+				if (answer.correct == true) {
+					answerCard.classList.add('right');
+				}
+			});
+		}
+
+
+	}); //End of the forEach Loop
+}
+
+function addNewAnswer(answerInput, question, questionCard, wrongAnswer, rightAnswer, answerContainer) {
+
+	event.preventDefault();
+
+	if(question.answers == null)
+		question.answers = [];
+
+	if (answerInput && answerInput.value) {
+		if (question.answers.length < 4 ) {
+			if (rightAnswer.checked) {
+				// Save it to the storedAnswers Array as correct
+				question.answers.push({
+					text: answerInput.value,
+					correct: true
+				});
+			} else {
+				// Save it to the storedAnswers Array as wrong
+				question.answers.push({
 					text: answerInput.value,
 					correct: false
 				});
-
-				// Added the storedAnswers object inside storedQuestions
-				storedQuestions[i].answers = storedAnswers;
-
-				// update the Array in localstorage
-				save();
-
-				// Now display it on the page
-				var answerList = questionCard.querySelector('.answerList');
-				var answerCard = answerList.querySelector('.answerCard');
-
-				console.log(answerList);
-				// Show this on the page!
-				console.log(answerInput.value);
-
-
-			} else {
-				console.log('Theres no input');
 			}
+			// update the Array in localstorage
+			save();
+			//Reload and display Updated Questions
+			questionContainer.innerHTML = '';
+			displayQuestions();
 
-		});
-
-	}); //End of the forEach Loop
+		} else {
+			console.log('theres enough question here already. Remove one maybe.');
+			answerContainer.innerHTML = "";
+			displayQuestions();
+		}
+	} else {
+		console.log('Theres no input');
+	}
 }
 
 main();

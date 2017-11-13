@@ -124,7 +124,8 @@ h6 {
     .inputForm .inputGroup label {
       display: block;
       font-size: 1rem;
-      opacity: .4; }
+      opacity: .4;
+      margin-bottom: 0.25rem; }
     .inputForm .inputGroup textarea {
       display: block;
       width: 100%;
@@ -165,53 +166,61 @@ h6 {
 
 .quizBlock {
   margin-top: 2.5rem; }
-  .quizBlock .questionWrap .questionCard {
-    border-radius: 4px;
-    background-color: #fff;
-    font-weight: 600;
-    margin-bottom: 1rem; }
-    .quizBlock .questionWrap .questionCard .questionBlock {
-      padding: 1.5rem; }
-    .quizBlock .questionWrap .questionCard .answerForm {
-      background-color: #F9FAFC;
-      padding: 1rem; }
-      .quizBlock .questionWrap .questionCard .answerForm .answerInput {
-        width: 100%;
-        font-size: 14px;
+  .quizBlock .questionWrap {
+    position: relative;
+    display: block; }
+    .quizBlock .questionWrap .questionCard {
+      border-radius: 4px;
+      padding: 1.5rem;
+      background-color: #fff;
+      font-weight: 600;
+      margin-bottom: 1rem; }
+      .quizBlock .questionWrap .questionCard .answerForm {
+        background-color: #F9FAFC;
+        padding: 1rem;
+        margin-top: 1rem; }
+        .quizBlock .questionWrap .questionCard .answerForm .answerInput {
+          width: 100%;
+          font-size: 14px;
+          padding: 0.5rem;
+          border: none;
+          border-radius: 2px;
+          margin-bottom: 0.75rem; }
+        .quizBlock .questionWrap .questionCard .answerForm .answerSelectors {
+          font-size: 0.875rem;
+          font-weight: 500;
+          margin-bottom: 0.75rem; }
+          .quizBlock .questionWrap .questionCard .answerForm .answerSelectors label {
+            display: inline-block;
+            margin-right: 0.75rem;
+            cursor: pointer; }
+      .quizBlock .questionWrap .questionCard .answerContainer .answerCard {
+        background-color: #fef7f7;
+        color: #ED332D;
         padding: 0.5rem;
-        border: none;
-        border-radius: 2px;
-        margin-bottom: 0.75rem; }
-      .quizBlock .questionWrap .questionCard .answerForm .answerSelectors {
         font-size: 0.875rem;
-        font-weight: 500;
-        margin-bottom: 0.75rem; }
-        .quizBlock .questionWrap .questionCard .answerForm .answerSelectors label {
-          display: inline-block;
-          margin-right: 0.75rem;
-          cursor: pointer; }
-  .quizBlock .questionWrap .answerList {
-    font-weight: 400; }
-    .quizBlock .questionWrap .answerList .answerCard {
-      background-color: #fdeae9;
-      margin-top: 1rem;
-      padding: 0.75rem;
-      border-radius: 4px; }
-  .quizBlock .questionWrap .answerBtn {
-    text-decoration: none;
-    border: none;
-    display: inline-block;
-    margin-top: 0.25rem;
-    background: none;
-    font-size: 0.875rem;
-    color: #1FB5FC;
-    cursor: pointer;
-    padding-bottom: 0.0625rem;
-    border-bottom: 1px solid #e8f8ff; }
-    .quizBlock .questionWrap .answerBtn:hover {
-      border-bottom: 1px solid #84d6fd; }
-    .quizBlock .questionWrap .answerBtn:focus {
-      outline: none; }
+        font-weight: 400;
+        border-radius: 4px;
+        margin-top: 0.5rem; }
+        .quizBlock .questionWrap .questionCard .answerContainer .answerCard.right {
+          background-color: #b1ecbf;
+          color: #28A947; }
+        .quizBlock .questionWrap .questionCard .answerContainer .answerCard.wrong {
+          background-color: #fdeae9; }
+    .quizBlock .questionWrap .answerBtn {
+      text-decoration: none;
+      border: none;
+      display: inline-block;
+      background: none;
+      font-size: 0.875rem;
+      color: #1FB5FC;
+      cursor: pointer;
+      padding-bottom: 0.0625rem;
+      border-bottom: 1px solid #e8f8ff; }
+      .quizBlock .questionWrap .answerBtn:hover {
+        border-bottom: 1px solid #84d6fd; }
+      .quizBlock .questionWrap .answerBtn:focus {
+        outline: none; }
 
 /* Helper Classes */
 .template {
