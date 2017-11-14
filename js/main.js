@@ -7,6 +7,7 @@ var questionBlock = document.querySelector('.quizBlock');
 var questionContainer = document.querySelector('.questionWrap');
 var questionTemplate = questionContainer.querySelector('.questionCard.template');
 var answerTemplate = questionContainer.querySelector('.answerCard.template');
+var deleteTemplate = questionContainer.querySelector('.deleteIcon.template');
 var storedQuestions;
 var storedAnswers;
 
@@ -15,6 +16,7 @@ function main() {
 
 	if (load()) {
 		displayQuestions();
+		deleteAnswers();
 		//displayAnswers();
 	}
 	else {
@@ -115,9 +117,13 @@ function displayQuestions() {
 
 			question.answers.forEach(function(answer, i) {
 				var answerCard = answerTemplate.cloneNode(true);
+				var answerText = answerCard.querySelector('.answerText');
+				var deleteIcon = answerCard.querySelector('.deleteIcon');
 				answerCard.classList.remove('template');
 				answerContainer.appendChild(answerCard);
-				answerCard.innerHTML = answer.text;
+				answerText.innerText = answer.text;
+
+				console.log()
 
 				if (answer.correct == true) {
 					answerCard.classList.add('right');
@@ -166,5 +172,15 @@ function addNewAnswer(answerInput, question, questionCard, wrongAnswer, rightAns
 		console.log('Theres no input');
 	}
 }
+
+
+
+// function deleteAnswers(question) {
+// 	question.answers.forEach(function(answer, i) {
+//
+// 		console.log(deleteIcon);
+// 	});
+// }
+
 
 main();
